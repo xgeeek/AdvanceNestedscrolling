@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".constraint.FirstConActivity">
+
+    <!-- 基线对齐 -->
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_green_light"
+        android:text="基线对齐20"
+        android:textColor="@android:color/black"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:background="@android:color/holo_red_light"
+        android:text="¥"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tv1"
+        app:layout_constraintStart_toEndOf="@id/tv1" />
+
+
+    <!-- 角度约束 -->
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="50dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv1" />
+
+    <ImageView
+        android:id="@+id/jetpack"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintCircle="@id/logo"
+        app:layout_constraintCircleAngle="45"
+        app:layout_constraintCircleRadius="80dp"
+        tools:ignore="MissingConstraints" />
+
+    <!-- 百分比偏移 bias-->
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:background="@android:color/holo_red_light"
+        android:gravity="center"
+        android:text="H-20%  V-50%"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/A"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:background="@mipmap/ic_launcher"
+        android:gravity="center"
+        android:text="A"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <!--  该控件设置了 layout_goneMarginStart="100dp" 当A控件隐藏时才会生效  -->
+    <TextView
+        android:id="@+id/B"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:background="@drawable/shape_orange_bg"
+        android:gravity="center"
+        android:text="B"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/A"
+        app:layout_constraintStart_toEndOf="@id/A"
+        app:layout_constraintTop_toTopOf="@id/A"
+        app:layout_goneMarginStart="100dp" />
+
+
+    <!-- 控件尺寸 spread percent wrap -->
+    <TextView
+        android:id="@+id/spread"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/shape_orange_bg"
+        android:gravity="center"
+        android:text="0dp-spread"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/A"
+        app:layout_constraintWidth_default="spread" />
+
+    <TextView
+        android:id="@+id/percent"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/shape_orange_bg"
+        android:gravity="center"
+        android:text="percent"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spread"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.5" />
+
+
+    <!--  宽度设置为wrap_content  margin并没有生效
+            可以使用强制约束 layout_constrainedWidth-->
+    <TextView
+        android:id="@+id/wrap_spread"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="100dp"
+        android:background="@drawable/shape_orange_bg"
+        android:gravity="center"
+        android:text="wrap-spread-AAAAAAAAAAAAAAAAAA"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/percent"
+        app:layout_constraintWidth_default="spread" />
+
+
+    <!--  宽度设置为0dp wrap模式  -->
+    <TextView
+        android:id="@+id/wrap_0dp_spread"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="100dp"
+        android:background="@drawable/shape_orange_bg"
+        android:gravity="center"
+        android:text="BBBBBBBBBBBBBBBBBBBBBBB"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wrap_spread"
+        app:layout_constraintWidth_default="wrap" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
